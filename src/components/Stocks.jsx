@@ -77,8 +77,9 @@ export function Stocks() {
         return title[0].toLowerCase().includes(stock);
       });
   }
+  else options=Savedata("Items",[])
   console.log("qqq",option1)
-  setAlreadyPresentList([...option1])
+  if(options!=null)setAlreadyPresentList([...option1])
     //checking through all available options
     let option2 = arr.filter((el) => {
       let title = el[0].split("::");
