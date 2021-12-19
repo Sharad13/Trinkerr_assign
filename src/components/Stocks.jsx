@@ -7,6 +7,7 @@ import {StockItems,Button} from "./StocksStyled"
 
 const arr = data.data;
 
+
 const abc = [];
 export function Stocks() {
   const [stock, setStock] = useState("");
@@ -95,17 +96,21 @@ export function Stocks() {
     <div className="outerBox">
       <div className="Box">
         <input
+        value={stock}
           onChange={(e) => setStock(e.target.value)}
           className="inp"
           type="text"
           placeholder="Search Stocks..."
         ></input>
       </div>
+      {
+        Loaddata("Items")===null?<div className="empty">No data available in watchlist !</div>:null
+      }
 
-      {!show?
+      {!show && userStock.length!==0 &&
         <div className="user">
-      <p className="=textName">SHARAD</p>
-      </div>:null
+      <p className="=textName">SHARAD <span className="numstocks">No of stocks: {userStock.length}</span></p>
+      </div>
       }
       {alreadyPresentList.length!==0 &&
         alreadyPresentList.map((el, i) => {
@@ -116,7 +121,7 @@ export function Stocks() {
           let perc = Math.round((el[1] - el[2]) * 100) / el[2];
 
           return (
-            <StockItems  className="alreadyPresent">    
+            <StockItems className="alreadyPresent stocks">    
             <div className="stockName">
                 <span
                   style={{
@@ -139,7 +144,7 @@ export function Stocks() {
                 <span className="NSE">
                   {b}
                 </span>
-                <span style={{ color: perc > 0 ? "black" : "red" }}>
+                <span style={{ color: perc > 0 ? "green" : "red" }}>
                 {(perc>0)?<img className="arrow1" src="https://img.icons8.com/ios-filled/50/4a90e2/collapse-arrow.png"/>:<img className="arrow2" src="https://img.icons8.com/ios/50/fa314a/expand-arrow--v2.png"/>}{perc.toFixed(3)}%
                 </span>
               </div>
@@ -156,7 +161,7 @@ export function Stocks() {
         })}
 
 
-      {show &&
+      {show && list.length!==0 &&
         list.map((el, i) => {
           let nam = el[0].split("::");
           let a = nam[0];
@@ -187,7 +192,7 @@ export function Stocks() {
                 <span className="NSE">
                   {b}
                 </span>
-                <span style={{ color: perc > 0 ? "black" : "red" }}>
+                <span style={{ color: perc > 0 ? "green" : "red" }}>
                 {(perc>0)?<img className="arrow1" src="https://img.icons8.com/ios-filled/50/4a90e2/collapse-arrow.png"/>:<img className="arrow2" src="https://img.icons8.com/ios/50/fa314a/expand-arrow--v2.png"/>}{perc.toFixed(3)}%
                 </span>
               </div>
@@ -196,12 +201,18 @@ export function Stocks() {
               <span className="plus">+</span>
               </Button>
               </div>
+
+              <div className="back" onClick={()=>setStock("")}>
+              <img className="backlogo" src="https://img.icons8.com/flat-round/64/000000/back--v1.png"/>
+              Back to watchlist</div>
             </StockItems>
           );
         })}
 
 
-        
+        {show && list.length===0 && <div className="nodata">
+          No data found!
+          </div>}
 
       {!show &&
         userStock.map((el, i) => {
@@ -237,7 +248,7 @@ export function Stocks() {
                 <span className="NSE">
                   {b}
                 </span>
-                <span style={{ color: perc > 0 ? "black" : "red" }}>
+                <span style={{ color: perc > 0 ? "green" : "red" }}>
                 {(perc>0)?<img className="arrow1" src="https://img.icons8.com/ios-filled/50/4a90e2/collapse-arrow.png"/>:<img className="arrow2" src="https://img.icons8.com/ios/50/fa314a/expand-arrow--v2.png"/>}{perc.toFixed(3)}%
                 </span>
               </div>
@@ -247,7 +258,6 @@ export function Stocks() {
               <img className="deleteCont" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/50/000000/external-delete-multimedia-kiranshastry-lineal-kiranshastry.png"/>
               </Button>
               </div>
-
             </StockItems>
           );
         })}

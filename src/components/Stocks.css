@@ -18,8 +18,8 @@
   color: black;
   padding-left: 10px;
   outline: blue;
-  border: none;
-  border-bottom: 1px solid #dddddd;
+  /* border: none; */
+  border: 1px solid #dddddd;
 }
 input:focus {
   outline: blue;
@@ -39,6 +39,7 @@ input:focus {
   font-weight: bold;
   text-align: left;
   margin-top: 5px;
+  padding: 0px;
 }
 .user p {
   font-size: 19px;
@@ -53,7 +54,14 @@ input:focus {
   border-bottom: 1px solid #dddddd;
   height: 80px;
 } */
-
+.empty {
+  font-size: 20px;
+}
+.numstocks {
+  color: grey;
+  margin-left: 325px;
+  font-size: 18px;
+}
 .stockName {
   display: flex;
   justify-content: space-between;
@@ -78,6 +86,9 @@ input:focus {
 }
 .plus {
   font-size: 15px;
+}
+.nodata {
+  color: red;
 }
 /* .addButton button {
   display: none;
@@ -106,4 +117,61 @@ input:focus {
   width: 40%;
   padding: 15px;
   background-color: green;
+}
+.back {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  color: rgb(36, 93, 199);
+  cursor: pointer;
+}
+.backlogo {
+  width: 24px;
+  margin-bottom: -7px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .outerBox {
+    width: 100%;
+    margin: auto;
+  }
+  .box {
+    width: 100%;
+    margin: auto;
+  }
+  .stockName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    font-size: 12px;
+  }
+  .arrow2 {
+    width: 9px;
+    padding-right: 3px;
+  }
+  .arrow1 {
+    width: 9px;
+    padding-right: 5px;
+  }
+  .user {
+    width: 42%;
+    margin: auto;
+    border: 1px solid #dddddd;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 5px;
+    padding: 5px;
+  }
+  .user p {
+    font-size: 11px;
+    margin-left: 5px;
+    padding: 5px;
+  }
+  .numstocks {
+    font-size: 10px;
+    margin-left: 30px;
+  }
 }
