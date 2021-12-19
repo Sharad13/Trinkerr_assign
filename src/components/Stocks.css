@@ -1,0 +1,109 @@
+.outerBox {
+  width: 100%;
+  padding-top: 50px;
+}
+.Box {
+  width: 40%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin: auto;
+  border-bottom: none;
+  border-top: none;
+  margin-bottom: 15px;
+}
+.inp {
+  width: 90%;
+  height: 26px;
+  font-size: 16px;
+  color: black;
+  padding-left: 10px;
+  outline: blue;
+  border: none;
+  border-bottom: 1px solid #dddddd;
+}
+input:focus {
+  outline: blue;
+}
+.arrow2 {
+  width: 15px;
+  padding-right: 5px;
+}
+.arrow1 {
+  width: 15px;
+  padding-right: 10px;
+}
+.user {
+  width: 42%;
+  margin: auto;
+  border: 1px solid #dddddd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 5px;
+}
+.user p {
+  font-size: 19px;
+  margin-left: 15px;
+  padding: 5px;
+}
+/* .stockItems {
+  width: 42%;
+  margin: auto;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px solid #dddddd;
+  height: 80px;
+} */
+
+.stockName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  font-size: 18px;
+}
+.NSE {
+  display: block;
+  background-color: #f5f1f1;
+  padding: 3px;
+  color: grey;
+}
+.addButton {
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  /* cursor: pointer; */
+}
+.deleteCont {
+  height: 20px;
+}
+.plus {
+  font-size: 15px;
+}
+/* .addButton button {
+  display: none;
+  background-color: #dddddd;
+  padding: 1px;
+  align-self: flex-end;
+  width: 4%;
+  border-radius: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+} */
+.alreadyPresent {
+  background-color: #dddddd;
+}
+.popup {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.addPopup {
+  position: absolute;
+  top: 250px;
+  left: 400px;
+  width: 40%;
+  padding: 15px;
+  background-color: green;
+}
