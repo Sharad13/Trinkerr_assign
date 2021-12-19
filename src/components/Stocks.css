@@ -131,7 +131,10 @@ input:focus {
   padding-right: 10px;
   cursor: pointer;
 }
-
+.nodataimage {
+  width: 300px;
+  margin-top: 25px;
+}
 @media (max-width: 600px) {
   .outerBox {
     width: 100%;

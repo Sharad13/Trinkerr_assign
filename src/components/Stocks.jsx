@@ -17,10 +17,12 @@ export function Stocks() {
   const [alreadyPresentList,setAlreadyPresentList]=useState([])
   const [addpopup,setaddPopup]=useState(false)
   const [deletepopup,setDeletePopup]=useState(false)
+  const [nodata,setNodata]=useState(false)
 
   useEffect(() => {
     if (stock.length >= 1) getData();
     else {
+      
       let ldata = Loaddata("Items");
       if(ldata==null)ldata=[]
       setAlreadyPresentList([])
@@ -44,6 +46,7 @@ export function Stocks() {
       setDeletePopup(false)
     },1000)
       setStock("") //going back to watchlist
+      if(userStock.length===0)setNodata(false)
   };
 
   const handleAdd = (a) => {
@@ -66,9 +69,14 @@ export function Stocks() {
     },1000)
   };
 
-
+const handleBack=()=>{
+  setStock("")
+  if(userStock.length===0)setNodata(false)
+  else setNodata(true)
+}
 //searching for stock options
  const getData = () => {
+   setNodata(true)
       //checking if its already available in watchlist or not
      let options=Loaddata("Items")
      if(options!=null){
@@ -103,9 +111,7 @@ export function Stocks() {
           placeholder="Search Stocks..."
         ></input>
       </div>
-      {
-        Loaddata("Items")===null?<div className="empty">No data available in watchlist !</div>:null
-      }
+     
 
       {!show && userStock.length!==0 &&
         <div className="user">
@@ -202,7 +208,7 @@ export function Stocks() {
               </Button>
               </div>
 
-              <div className="back" onClick={()=>setStock("")}>
+              <div className="back" onClick={()=>handleBack()}>
               <img className="backlogo" src="https://img.icons8.com/flat-round/64/000000/back--v1.png"/>
               Back to watchlist</div>
             </StockItems>
@@ -210,9 +216,12 @@ export function Stocks() {
         })}
 
 
-        {show && list.length===0 && <div className="nodata">
-          No data found!
+        {!show && userStock.length===0  && <div className="nodata">
+        <img className="nodataimage" src="https://user-images.githubusercontent.com/81285053/146680384-146039a2-ec06-4c9c-8bfb-36e6bb37fc1d.png" alt=""></img>
           </div>}
+          {show && list.length===0   && <div className="nodata">
+          <img className="nodataimage" src="https://user-images.githubusercontent.com/81285053/146680384-146039a2-ec06-4c9c-8bfb-36e6bb37fc1d.png" alt=""></img>
+            </div>}
 
       {!show &&
         userStock.map((el, i) => {
